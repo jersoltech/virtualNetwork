@@ -27,3 +27,20 @@ $vnet = @{
 } 
 
 $virtualNetwork = New-AzVirtualNetwork @vnet 
+
+#adding a subnet to the virtual network
+
+$subnet = @{ 
+
+    Name = 'abcofcloud-Subnet' 
+
+    VirtualNetwork = $virtualNetwork 
+
+    AddressPrefix = '10.0.1.0/24' 
+
+} 
+
+$subnetConfig = Add-AzVirtualNetworkSubnetConfig @subnet 
+
+  
+$virtualNetwork | Set-AzVirtualNetwork 
